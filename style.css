@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  width: 100%;
+}
+
+header a {
+  text-decoration: none;
+  color: black;
+}
+
+main {
+  margin: 3;
+}
+
+.navknap {
+  text-decoration: none;
+  color: black;
+}
+/* Forside */
+.forsideknap {
+  text-decoration: none;
+  color: black;
+  background-color: rgb(247, 232, 203);
+  padding: 2rem;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.forsideknap:hover {
+  background-color: rgb(244, 225, 187);
+  transform: translateY(-5px);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+  transition:
+    transform 0.3 ease,
+    box-shadow 0.3 ease;
+}
+
+.kategorier-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+/* Produktliste */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 50px;
+}
+
+.product-card {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 5;
+}
+
+.product-grid a {
+  text-decoration: none;
+  color: black;
+}
+
+.product-image {
+  width: 100%;
+  aspect-ratio: 1 / 1.2;
+  object-fit: cover;
+}
+
+.nosale {
+  display: none;
+}
+
+.nobgsale {
+  display: none;
+}
+
+.bgsale {
+  background-color: red;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+}
+
+.sold-out-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(128, 128, 128, 0.8);
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-weight: bold;
+}
+
+@media (max-width: 700px) {
+  .kategorier-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
