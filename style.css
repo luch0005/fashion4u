@@ -2,11 +2,31 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: sans-serif;
+  font-weight: 150;
+}
+
+h1 {
+  font-size: 5rem;
+  padding-left: 2rem;
+  padding-top: 5rem;
+}
+
+h2 {
+  font-size: 3rem;
+  padding: 2rem;
 }
 
 header {
   width: 100%;
+  padding: 2rem;
+  background-color: rgb(247, 232, 203);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 header a {
@@ -22,6 +42,7 @@ main {
   text-decoration: none;
   color: black;
 }
+
 /* Forside */
 .forsideknap {
   text-decoration: none;
@@ -37,8 +58,8 @@ main {
   transform: translateY(-5px);
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
   transition:
-    transform 0.3 ease,
-    box-shadow 0.3 ease;
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .kategorier-grid {
@@ -48,8 +69,7 @@ main {
 }
 
 /* Produktliste */
-
-.product-grid {
+.productlist-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
@@ -60,9 +80,10 @@ main {
   display: grid;
   grid-template-rows: subgrid;
   grid-row: span 5;
+  border: 1px solid #eee;
 }
 
-.product-grid a {
+.productlist-grid a {
   text-decoration: none;
   color: black;
 }
@@ -73,19 +94,17 @@ main {
   object-fit: cover;
 }
 
-.nosale {
-  display: none;
-}
-
-.nobgsale {
-  display: none;
-}
-
 .bgsale {
   background-color: red;
 }
 
-.image-container {
+.nosale,
+.nobgsale,
+.sold-out-badge-invisible {
+  display: none;
+}
+
+.soldout {
   position: relative;
   width: 100%;
 }
@@ -102,10 +121,81 @@ main {
   font-weight: bold;
 }
 
+/* Product */
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-top: 5rem;
+}
+
+.product-pic {
+  width: 100%;
+}
+
+.product-information h2 {
+  padding-left: 0;
+  padding-top: 0;
+}
+
+.form-section {
+  color: white;
+  background-color: rgb(239, 224, 161);
+  padding: 10px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-container label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-container input,
+.form-container select {
+  padding: 12px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+}
+
 @media (max-width: 700px) {
+  header {
+    width: 100%;
+    padding: 1rem;
+  }
+
   .kategorier-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    padding-left: 1rem;
+    padding-top: 3rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+    padding: 1rem;
+  }
+
+  .productlist-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 1.5rem;
   }
 }
