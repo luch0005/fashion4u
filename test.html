@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Frugter</h1>
+    <ul></ul>
+    <script>
+      const ul = document.querySelector("ul");
+
+      const frugter = ["banan", "æbler", "citron", "appelsin"];
+
+      frugter.forEach(bygListe);
+
+      function bygListe(frugt) {
+        ul.innerHTML += "<li>" + frugt + "</li>";
+      }
+    </script>
+  </body>
+</html>
