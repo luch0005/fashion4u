@@ -83,6 +83,11 @@ main {
   border: 1px solid #eee;
 }
 
+.product-card.soldout img {
+  opacity: 0.5;
+  filter: grayscale(50%);
+}
+
 .productlist-grid a {
   text-decoration: none;
   color: black;
@@ -96,6 +101,9 @@ main {
 
 .bgsale {
   background-color: red;
+  color: white;
+  padding: 4px;
+  width: fit-content;
 }
 
 .nosale,

@@ -27,10 +27,12 @@ function showData(products) {
             </div>
             <h3>${product.productdisplayname}</h3>
             <p class="category-brand">${product.articletype} | ${product.brandname}</p>
-            <p class="price">DKK <span>${product.price}</span>,-</p>
-            <p class="sale">Nu DKK <span>${Math.round(product.price - (product.price * product.discount) / 100)}</span>,-</p>
-            
-            <p class="bgsale"><span>${product.id}</span></p>
+            <p class="price">DKK ${product.price},-</p>
+          
+${product.discount ? `<p class="sale">Nu DKK ${Math.round(product.price - (product.price * product.discount) / 100)},-</p>` : ""}
+
+
+${product.discount ? `<p class="bgsale">${product.discount}%</p>` : ""}
           </article>
         </a>`),
   );
