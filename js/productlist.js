@@ -1,8 +1,8 @@
 const kategori = new URLSearchParams(window.location.search).get("category");
+const endpoint = `https://kea-alt-del.dk/t7/api/products?category=${kategori}`;
 
 const container = document.querySelector(".productlist-grid");
 
-const endpoint = `https://kea-alt-del.dk/t7/api/products?category=${kategori}`;
 document.querySelector("h2").textContent = kategori;
 
 function getData() {
@@ -15,7 +15,7 @@ function showData(products) {
   let markup = "";
   products.forEach(
     (product) =>
-      (markup += ` <a href="product.html">
+      (markup += ` <a href="productdetails.html?id=${product.id}">
           <article class="product-card ${product.soldout && "soldout"} ${product.discount && "sale"}">
             <div class="soldout">
               <img
@@ -28,11 +28,8 @@ function showData(products) {
             <h3>${product.productdisplayname}</h3>
             <p class="category-brand">${product.articletype} | ${product.brandname}</p>
             <p class="price">DKK ${product.price},-</p>
-          
-${product.discount ? `<p class="sale">Nu DKK ${Math.round(product.price - (product.price * product.discount) / 100)},-</p>` : ""}
-
-
-${product.discount ? `<p class="bgsale">${product.discount}%</p>` : ""}
+            ${product.discount ? `<p class="sale">Nu DKK ${Math.round(product.price - (product.price * product.discount) / 100)},-</p>` : ""}
+            ${product.discount ? `<p class="bgsale">${product.discount}%</p>` : ""}
           </article>
         </a>`),
   );

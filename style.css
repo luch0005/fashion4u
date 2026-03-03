@@ -16,6 +16,9 @@ h2 {
   font-size: 3rem;
   padding: 2rem;
 }
+h3 {
+  font-size: 1.5rem;
+}
 
 header {
   width: 100%;
@@ -130,6 +133,16 @@ main {
 }
 
 /* Product */
+.tilbageknap {
+  font-size: 1rem;
+  color: rgb(194, 194, 194);
+  padding: 1.5rem;
+}
+
+.soldout-product {
+  background-color: rgba(128, 128, 128, 0.8);
+}
+
 .product-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -147,7 +160,7 @@ main {
 
 .form-section {
   color: white;
-  background-color: rgb(239, 224, 161);
+  background-color: rgb(184, 215, 244);
   padding: 10px;
 }
 
@@ -205,5 +218,10 @@ main {
     grid-template-columns: 1fr;
     gap: 3rem;
     padding: 1.5rem;
+  }
+
+  .tilbageknap {
+    font-size: 0.7rem;
+    padding: 0.5rem;
   }
 }
