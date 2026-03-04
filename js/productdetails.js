@@ -1,7 +1,7 @@
 const id = new URLSearchParams(window.location.search).get("id");
 const endpoint = `https://kea-alt-del.dk/t7/api/products/${id}`;
 
-const container = document.querySelector(".product-grid");
+const container = document.querySelector("main");
 
 function getData() {
   fetch(endpoint)
@@ -12,24 +12,28 @@ function getData() {
 function showData(product) {
   console.log(product);
   container.innerHTML = `
-  <div>
-<a class="tilbageknap" href="productlist.html?category=${product.category}">Go back to productlist</a> 
-</br>
+  <div class="topproductdetails">
+  <a class="tilbageknap" href="productlist.html?category=${product.category}"
+  >Go back to productlist</a
+>
+${product.soldout ? `<h3 class="soldout-product">Sold out</h3>` : ""}
+ </div>
+<section class="product-grid">
+ <div>
 <img
         class="product-pic"
         src="https://kea-alt-del.dk/t7/images/webp/640/${product.id}.webp"
         alt="Produktbillede"
       />
       </div>
-
       <article class="product-information">
- ${product.soldout ? `<h3 class="soldout-product">Sold out</h3>` : ""}
         <h2>${product.productdisplayname}</h2>
         <p>${product.articletype}</p>
         <p>${product.subcategory}</p>
         <p>DKK ${product.price},-</p>
-        ${product.discount ? `<p class="sale">Nu DKK ${Math.round(product.price - (product.price * product.discount) / 100)},-</p>` : ""}
+        ${product.discount ? `<p class="saleprice">Nu DKK ${Math.round(product.price - (product.price * product.discount) / 100)},-</p>` : ""}
         ${product.discount ? `<p class="bgsale">${product.discount}%</p>` : ""}
+        </br>
         <h3>${product.brandname}</h3>
         ${product.brandbio ? `<p>${product.brandbio}</p>` : ""}
       </article>
@@ -47,6 +51,7 @@ function showData(product) {
         </div>
         <button>Føj til kurven</button>
       </article>
+      </section>
 `;
 }
 
