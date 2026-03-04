@@ -1,5 +1,5 @@
 const kategori = new URLSearchParams(window.location.search).get("category");
-const endpoint = `https://kea-alt-del.dk/t7/api/products?category=${kategori}`;
+const endpoint = `https://kea-alt-del.dk/t7/api/products?category=${kategori}&limit=60`;
 
 const container = document.querySelector(".productlist-grid");
 
