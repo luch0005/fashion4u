@@ -1,14 +1,60 @@
 const kategori = new URLSearchParams(window.location.search).get("category");
 const endpoint = `https://kea-alt-del.dk/t7/api/products?category=${kategori}&limit=60`;
+document.querySelector("h2").textContent = kategori;
 
 const container = document.querySelector(".productlist-grid");
 
-document.querySelector("h2").textContent = kategori;
+let allData;
+
+document
+  .querySelectorAll("#filter button")
+  .forEach((knap) => knap.addEventListener("click", filter));
+
+document
+  .querySelectorAll("#sorter button")
+  .forEach((knap) => knap.addEventListener("click", sorter));
 
 function getData() {
   fetch(endpoint)
-    .then((res) => res.json())
-    .then(showData);
+    .then((response) => response.json())
+    .then((data) => {
+      allData = data;
+      showData(allData);
+    });
+}
+
+function filter(e) {
+  const valgt = e.target.textContent;
+  if (valgt === "All") {
+    currentData = allData;
+    showData(currentData);
+  } else {
+    currentData = allData.filter((element) => element.gender == valgt);
+    showData(currentData);
+  }
+}
+
+function sorter(event) {
+  if (event.target.dataset.price) {
+    const dir = event.target.dataset.price;
+    if (dir == "acc") {
+      currentData.sort((a, b) => a.price - b.price);
+    } else {
+      currentData.sort((a, b) => b.price - a.price);
+    }
+  } else {
+    const dir = event.target.dataset.text;
+    if (dir == "az") {
+      currentData.sort((a, b) =>
+        a.productdisplayname.localeCompare(b.productdisplayname, "da"),
+      );
+    } else {
+      currentData.sort((a, b) =>
+        b.productdisplayname.localeCompare(a.productdisplayname, "da"),
+      );
+    }
+  }
+  showData(currentData);
 }
 
 function showData(products) {
@@ -38,31 +84,3 @@ function showData(products) {
 }
 
 getData();
-console.log(container);
-
-document
-  .querySelectorAll("button")
-  .forEach((knap) => knap.addEventListener("click", filter));
-
-let allData;
-
-function getData() {
-  fetch(endpoint)
-    .then((response) => response.json())
-    .then((data) => {
-      allData = data;
-      showData(allData);
-    });
-}
-
-function filter(e) {
-  const valgt = e.target.textContent;
-  if (valgt === "All") {
-    console.log(allData);
-    showData(allData);
-  } else {
-    const udsnit = allData.filter((element) => element.gender == valgt);
-    console.log(udsnit);
-    showData(udsnit);
-  }
-}
